@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { MatchCard } from '@/views/matches/MatchCard';
+import { MatchCard } from '@/components/domain/MatchCard';
 import { DateSelector } from './DateSelector';
 // TODO: Where this component belongs to?
-import { CompetitionFilter } from '../competitions/CompetitionFilter';
+import { CompetitionsFilter } from './_internal/CompetitionsFilter';
 import { RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -59,6 +59,14 @@ const mockMatches = [
     time: '21:00',
     competition: 'Ligue 1',
   },
+  {
+    id: '6',
+    homeTeam: { id: 'oviedo', name: 'Oviedo', logo: '' },
+    awayTeam: { id: 'girona', name: 'Girona', logo: '' },
+    status: 'scheduled' as const,
+    time: '22:00',
+    competition: 'La Liga',
+  },
 ];
 
 export function Dashboard() {
@@ -89,14 +97,14 @@ export function Dashboard() {
     <div className="flex flex-col h-full bg-secondary/30">
       <DateSelector selectedDate={selectedDate} onDateChange={setSelectedDate} />
 
-      <CompetitionFilter
+      <CompetitionsFilter
         competitions={competitions}
         selectedCompetitions={selectedCompetitions}
         onSelectionChange={setSelectedCompetitions}
       />
 
       <div className="flex-1 overflow-auto">
-        <div className="p-4 space-y-4">
+        <div className="p-4 space-y-4 border pb-[70px]">
           {/* Header with refresh */}
           <div className="flex items-center justify-between">
             <h1 className="text-lg font-semibold">Live Scores</h1>

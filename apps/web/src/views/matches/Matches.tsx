@@ -1,6 +1,6 @@
 import { Calendar, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { MatchCard } from './MatchCard';
+import { MatchCard } from '../../components/domain/MatchCard';
 
 const upcomingMatches = [
   {

@@ -41,25 +41,13 @@ export function DateSelector({ selectedDate, onDateChange }: DateSelectorProps) 
     onDateChange(nextDay);
   };
 
-  const handleToday = () => {
-    onDateChange(new Date());
-  };
-
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 border-b border-border">
       <Button variant="ghost" size="sm" onClick={handlePrevDay} className="h-8 w-8 p-0">
         <ChevronLeft size={16} />
       </Button>
 
-      <div className="flex items-center space-x-4">
-        <button
-          onClick={handleToday}
-          className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-        >
-          Today
-        </button>
-        <h2 className="text-base font-semibold">{formatDate(selectedDate)}</h2>
-      </div>
+      <h2 className="text-base font-semibold">{formatDate(selectedDate)}</h2>
 
       <Button variant="ghost" size="sm" onClick={handleNextDay} className="h-8 w-8 p-0">
         <ChevronRight size={16} />

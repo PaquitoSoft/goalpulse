@@ -1,14 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dashboard } from './views/dashboard/Dashboard';
 import { Competitions } from './views/competitions/Competitions';
 import { Matches } from './views/matches/Matches';
 import { Settings } from './views/settings/Settings';
 import { BottomNavigation } from './components/layout/BottomNavigation';
+import { isLoggedIn } from './api/auth';
+import { LoginView } from './views/login/login-view';
 
 type TAppActiveTab = 'dashboard' | 'competitions' | 'matches' | 'settings';
 
 function App() {
   const [activeTab, setActiveTab] = useState<TAppActiveTab>('dashboard');
+
+  if (!isLoggedIn()) {
+    return <LoginView onLogin={() => false} />;
+  }
 
   const renderContent = () => {
     switch (activeTab) {

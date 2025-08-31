@@ -7,17 +7,17 @@ interface Competition {
   country?: string;
 }
 
-interface CompetitionFilterProps {
+type TCompetitionsFilterProps = {
   competitions: Competition[];
   selectedCompetitions: string[];
   onSelectionChange: (competitionIds: string[]) => void;
-}
+};
 
-export function CompetitionFilter({
+export function CompetitionsFilter({
   competitions,
   selectedCompetitions,
   onSelectionChange,
-}: CompetitionFilterProps) {
+}: TCompetitionsFilterProps) {
   const toggleCompetition = (competitionId: string) => {
     if (selectedCompetitions.includes(competitionId)) {
       onSelectionChange(selectedCompetitions.filter((id) => id !== competitionId));
