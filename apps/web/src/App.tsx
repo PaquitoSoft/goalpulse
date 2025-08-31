@@ -3,7 +3,7 @@ import { Dashboard } from './views/dashboard/Dashboard';
 import { Competitions } from './views/competitions/Competitions';
 import { Matches } from './views/matches/Matches';
 import { Settings } from './views/settings/Settings';
-import { BottomNavigation } from './layout/BottomNavigation';
+import { BottomNavigation } from './components/layout/BottomNavigation';
 
 type TAppActiveTab = 'dashboard' | 'competitions' | 'matches' | 'settings';
 

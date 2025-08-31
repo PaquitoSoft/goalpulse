@@ -8,11 +8,19 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      srcDir: 'src',
+      filename: 'sw.ts',
+      strategies: 'injectManifest',
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      manifestFilename: 'manifest.json',
       manifest: {
         name: 'GoalPulse',
         short_name: 'GoalPulse',
-        description: 'Track and achieve your goals',
+        description: 'Track your favorite football teams',
         theme_color: '#000000',
         background_color: '#ffffff',
         display: 'standalone',
@@ -21,31 +29,27 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: 'pwa-64x64.png',
+            src: 'app-logo-64.png',
             sizes: '64x64',
             type: 'image/png',
           },
           {
-            src: 'pwa-192x192.png',
+            src: 'app-logo-192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'app-logo-512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any',
-          },
-          {
-            src: 'maskable-icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'maskable',
           },
         ],
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/_/, /\/[^/?]+\.[^/]+$/],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\./i,
